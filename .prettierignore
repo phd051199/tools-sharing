@@ -1,0 +1,10 @@
+dist
+node_modules
+coverage
+public
+.npmrc
+*-lock.yaml
+.vscode
+auto-imports.d.ts
+components.d.ts
+README.md

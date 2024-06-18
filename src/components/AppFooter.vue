@@ -12,8 +12,12 @@
       <v-icon :icon="item.icon" :size="item.icon === '$vuetify' ? 24 : 16" />
     </a>
 
-    <div class="text-caption text-disabled" style="position: absolute; right: 16px">
-      &copy; 2016-{{ new Date().getFullYear() }} <span class="d-none d-sm-inline-block">Vuetify, LLC</span>
+    <div
+      class="text-caption text-disabled"
+      style="position: absolute; right: 16px"
+    >
+      &copy; 2016-{{ new Date().getFullYear() }}
+      <span class="d-none d-sm-inline-block">Vuetify, LLC</span>
       —
       <a
         class="on-surface text-decoration-none"

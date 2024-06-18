@@ -1,5 +1,12 @@
 <template>
-  <v-navigation-drawer color="surface" rail floating class="fixed!" :rail-width="88" :mobile-breakpoint="768">
+  <v-navigation-drawer
+    color="surface"
+    rail
+    floating
+    class="fixed!"
+    :rail-width="88"
+    :mobile-breakpoint="768"
+  >
     <template #prepend>
       <v-container class="text-center">
         <v-btn
@@ -15,12 +22,21 @@
     </template>
 
     <v-list>
-      <v-list-item class="mb-3.5 h-15 p-0!" :ripple="false" v-for="(item, index) in navItems" :key="index">
+      <v-list-item
+        class="mb-3.5 h-15 p-0!"
+        :ripple="false"
+        v-for="(item, index) in navItems"
+        :key="index"
+      >
         <v-container class="text-center p-0!" @click="router.push(item.link)">
           <v-btn
             flat
             ripple
-            :color="route.path === item.link ? 'secondary-container' : 'transparent'"
+            :color="
+              router.currentRoute.value.path === item.link
+                ? 'secondary-container'
+                : 'transparent'
+            "
             class="mx-auto mb-1 h-8! min-w-14!"
           >
             <component class="size-6" :is="item.icon"></component>
@@ -29,7 +45,8 @@
           <div
             class="cursor-pointer text-xs"
             :style="{
-              fontWeight: route.path === item.link ? '900' : '700'
+              fontWeight:
+                router.currentRoute.value.path === item.link ? '900' : '700'
             }"
           >
             {{ item.title }}
@@ -63,15 +80,34 @@ import IMaterialSymbolsPaletteOutline from '~icons/material-symbols/palette-outl
 
 const { isDark, toggleDark } = useDark();
 
-const route = useRoute();
 const router = useRouter();
 
 const navItems = [
   { badge: true, link: '/', title: 'Home', icon: IMaterialSymbolsHomeOutline },
-  { badge: true, link: '/explore', title: 'Develop', icon: IMaterialSymbolsCode },
+  {
+    badge: true,
+    link: '/explore',
+    title: 'Develop',
+    icon: IMaterialSymbolsCode
+  },
   { badge: false, link: '#', title: 'Get started', icon: IMaterialSymbolsApps },
-  { badge: false, link: '#', title: 'Foundations', icon: IMaterialSymbolsBookOutline },
-  { badge: false, link: '#', title: 'Styles', icon: IMaterialSymbolsPaletteOutline },
-  { badge: false, link: '#', title: 'Components', icon: IMaterialSymbolsAddCircleOutline }
+  {
+    badge: false,
+    link: '#',
+    title: 'Foundations',
+    icon: IMaterialSymbolsBookOutline
+  },
+  {
+    badge: false,
+    link: '#',
+    title: 'Styles',
+    icon: IMaterialSymbolsPaletteOutline
+  },
+  {
+    badge: false,
+    link: '#',
+    title: 'Components',
+    icon: IMaterialSymbolsAddCircleOutline
+  }
 ];
 </script>

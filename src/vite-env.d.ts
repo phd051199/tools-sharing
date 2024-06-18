@@ -7,6 +7,7 @@ import type dayjs from 'dayjs';
 declare module 'vue' {
   interface ComponentCustomProperties {
     Component: Component;
+    highlightjs: Component;
     $dayjs: typeof dayjs;
   }
 }

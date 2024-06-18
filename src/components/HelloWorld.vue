@@ -1,7 +1,7 @@
 <template>
   <v-container class="fill-height">
     <v-responsive class="align-centerfill-height mx-auto" max-width="900">
-      <v-img class="mb-4" height="150" src="@/assets/logo.png" />
+      <v-img class="mb-4" height="300" src="@/assets/logo.png" />
 
       <div class="text-center">
         <div class="font-weight-light mb-n1 text-body-2">Welcome to</div>

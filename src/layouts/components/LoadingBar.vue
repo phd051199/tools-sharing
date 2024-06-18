@@ -5,42 +5,46 @@
     color="primary"
     height="4"
     :model-value="progress"
-  ></v-progress-linear>
+  />
 </template>
 
 <script setup lang="ts">
+import { ref, watch } from 'vue';
+import { useRouter } from 'vue-router';
+
 import { useLoadingStore } from '@/stores/loading';
 
 const progress = ref<number>(0);
 const loadingStore = useLoadingStore();
+const router = useRouter();
 
 let valueTimer: number;
 let finishTimer: number;
 
-const clearTimer = () => {
+const clearTimers = () => {
   window.clearTimeout(valueTimer);
   window.clearTimeout(finishTimer);
 };
 
-const tickValue = () => {
+const incrementProgress = () => {
   valueTimer = window.setTimeout(() => {
     if (progress.value < 95) {
-      let num = Math.random();
-      if (progress.value < 70) num = Math.round(50 * Math.random());
-      progress.value += num;
-      tickValue();
+      const increment =
+        progress.value < 70 ? Math.round(50 * Math.random()) : Math.random();
+      progress.value += increment;
+      incrementProgress();
     }
   }, 200);
 };
 
-const start = () => {
-  clearTimer();
+const startProgress = () => {
+  clearTimers();
   progress.value = 0;
-  tickValue();
+  incrementProgress();
 };
 
-const finish = () => {
-  clearTimer();
+const finishProgress = () => {
+  clearTimers();
   progress.value = 100;
   finishTimer = window.setTimeout(() => {
     progress.value = 0;
@@ -50,8 +54,20 @@ const finish = () => {
 watch(
   () => loadingStore.loading,
   (loading) => {
-    loading ? start() : finish();
+    if (loading) {
+      startProgress();
+    } else {
+      finishProgress();
+    }
   },
   { immediate: true }
 );
+
+router.beforeEach(() => {
+  loadingStore.setLoading(true);
+});
+
+router.beforeResolve(() => {
+  loadingStore.setLoading(false);
+});
 </script>

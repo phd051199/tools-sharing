@@ -5,7 +5,7 @@
     <div>
       <v-row no-gutters>
         <v-col v-for="n in data" :key="n.id" cols="12" sm="4">
-          <v-card @click="() => false" class="ma-2 pa-2" v-if="n.path">
+          <v-card flat @click="() => false" class="ma-2 pa-2" v-if="n.path">
             <v-card-title>{{ n.id }}</v-card-title>
             <v-card-subtitle>{{ $dayjs(n.createdAt).format('YYYY-MM-DD HH:mm:ss') }}</v-card-subtitle>
             <v-card-text>{{ n.path }}</v-card-text>

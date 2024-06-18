@@ -17,14 +17,19 @@
     <v-list>
       <v-list-item class="mb-3.5 h-15 p-0!" :ripple="false" v-for="(item, index) in navItems" :key="index">
         <v-container class="text-center p-0!" @click="router.push(item.link)">
-          <v-btn :variant="route.path === item.link ? 'tonal' : 'text'" ripple class="mx-auto mb-1 h-8! min-w-14!">
+          <v-btn
+            flat
+            ripple
+            :color="route.path === item.link ? 'secondary-container' : 'transparent'"
+            class="mx-auto mb-1 h-8! min-w-14!"
+          >
             <component class="size-6" :is="item.icon"></component>
           </v-btn>
 
           <div
             class="cursor-pointer text-xs"
-            :class="{
-              'font-bold': route.path === item.link
+            :style="{
+              fontWeight: route.path === item.link ? '900' : '700'
             }"
           >
             {{ item.title }}
@@ -36,6 +41,7 @@
     <template #append>
       <v-container class="text-center">
         <v-btn
+          color="on-surface"
           variant="outlined"
           @click="toggleDark"
           :icon="isDark ? 'mdi-weather-sunny' : 'mdi-weather-night'"

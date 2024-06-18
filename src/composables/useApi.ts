@@ -1,6 +1,8 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Ref, ref } from 'vue';
 
+import { useLoadingStore } from '@/stores/loading';
+
 export interface Response<T> {
   data: T;
   code: number;
@@ -20,6 +22,8 @@ const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_MOCK_API_BASE
 });
 
+const { setLoading } = useLoadingStore();
+
 export function useApi<R = any, P = Record<string, any>>(url: string, method: HttpMethod) {
   async function load<OVR = R, OP = P>(params?: OP, config?: AxiosRequestConfig): Promise<Response<OVR>> {
     const response: AxiosResponse<Response<OVR>> = await axiosInstance({
@@ -37,7 +41,7 @@ export function useApi<R = any, P = Record<string, any>>(url: string, method: Ht
     const error: Ref<any> = ref(null);
 
     const fetchData = async () => {
-      loading.value = true;
+      setLoading((loading.value = true));
       error.value = null;
       try {
         const response = await load<OVR, OP>(options.params, options.config);
@@ -54,6 +58,10 @@ export function useApi<R = any, P = Record<string, any>>(url: string, method: Ht
         }
       } finally {
         loading.value = false;
+
+        setTimeout(() => {
+          setLoading(false);
+        }, 500);
       }
     };
 

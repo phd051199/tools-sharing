@@ -1,5 +1,7 @@
 <template>
   <v-app>
+    <loading-bar />
+
     <navigation-rail />
 
     <v-main>
@@ -9,5 +11,6 @@
 </template>
 
 <script lang="ts" setup>
+import LoadingBar from './components/LoadingBar.vue';
 import NavigationRail from './components/NavigationRail.vue';
 </script>

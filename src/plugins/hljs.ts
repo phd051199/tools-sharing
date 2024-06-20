@@ -1,5 +1,3 @@
-import 'highlight.js/styles/github.css';
-
 import hljsVuePlugin from '@highlightjs/vue-plugin';
 import hljs from 'highlight.js/lib/core';
 import js from 'highlight.js/lib/languages/javascript';

@@ -79,6 +79,9 @@
     "storeToRefs": true,
     "api": true,
     "useApi": true,
-    "useDark": true
+    "useDark": true,
+    "useFileStorage": true,
+    "useGoogleSignIn": true,
+    "useDevice": true
   }
 }

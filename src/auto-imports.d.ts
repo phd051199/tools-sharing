@@ -69,6 +69,9 @@ declare global {
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useDark: typeof import('@/composables')['useDark']
+  const useDevice: typeof import('@/composables')['useDevice']
+  const useFileStorage: typeof import('@/composables')['useFileStorage']
+  const useGoogleSignIn: typeof import('@/composables')['useGoogleSignIn']
   const useLink: typeof import('vue-router')['useLink']
   const useRoute: typeof import('vue-router/auto')['useRoute']
   const useRouter: typeof import('vue-router/auto')['useRouter']
@@ -150,6 +153,9 @@ declare module 'vue' {
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly useDark: UnwrapRef<typeof import('@/composables')['useDark']>
+    readonly useDevice: UnwrapRef<typeof import('@/composables')['useDevice']>
+    readonly useFileStorage: UnwrapRef<typeof import('@/composables')['useFileStorage']>
+    readonly useGoogleSignIn: UnwrapRef<typeof import('@/composables')['useGoogleSignIn']>
     readonly useRoute: UnwrapRef<typeof import('vue-router/auto')['useRoute']>
     readonly useRouter: UnwrapRef<typeof import('vue-router/auto')['useRouter']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
@@ -223,6 +229,9 @@ declare module '@vue/runtime-core' {
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly useDark: UnwrapRef<typeof import('@/composables')['useDark']>
+    readonly useDevice: UnwrapRef<typeof import('@/composables')['useDevice']>
+    readonly useFileStorage: UnwrapRef<typeof import('@/composables')['useFileStorage']>
+    readonly useGoogleSignIn: UnwrapRef<typeof import('@/composables')['useGoogleSignIn']>
     readonly useRoute: UnwrapRef<typeof import('vue-router/auto')['useRoute']>
     readonly useRouter: UnwrapRef<typeof import('vue-router/auto')['useRouter']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>

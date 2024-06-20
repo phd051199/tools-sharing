@@ -50,7 +50,26 @@ export const lightTheme: ThemeDefinition = {
     'surface-container-low': '#f8f1fa',
     'surface-container': '#f2ecf4',
     'surface-container-high': '#ede6ee',
-    'surface-container-highest': '#e7e0e8'
+    'surface-container-highest': '#e7e0e8',
+
+    // highlight.js
+    'hljs-text': '#24292e',
+    'hljs-keyword': '#d73a49',
+    'hljs-entity': '#6f42c1',
+    'hljs-constant': '#005cc5',
+    'hljs-string': '#032f62',
+    'hljs-variable': '#e36209',
+    'hljs-comment': '#6a737d',
+    'hljs-entity-tag': '#22863a',
+    'hljs-storage-modifier-import': '#24292e',
+    'hljs-markup-heading': '#005cc5',
+    'hljs-markup-list': '#735c0f',
+    'hljs-markup-italic': '#24292e',
+    'hljs-markup-bold': '#24292e',
+    'hljs-markup-inserted': '#22863a',
+    'hljs-bg-markup-inserted': '#f0fff4',
+    'hljs-markup-deleted': '#b31d28',
+    'hljs-bg-markup-deleted': '#ffeef0'
   }
 };
 
@@ -104,6 +123,25 @@ export const darkTheme: ThemeDefinition = {
     'surface-container-low': '#1d1b20',
     'surface-container': '#211f24',
     'surface-container-high': '#2c292f',
-    'surface-container-highest': '#36343a'
+    'surface-container-highest': '#36343a',
+
+    // highlight.js
+    'hljs-text': '#c9d1d9',
+    'hljs-keyword': '#ff7b72',
+    'hljs-entity': '#d2a8ff',
+    'hljs-constant': '#79c0ff',
+    'hljs-string': '#a5d6ff',
+    'hljs-variable': '#ffa657',
+    'hljs-comment': '#8b949e',
+    'hljs-entity-tag': '#7ee787',
+    'hljs-storage-modifier-import': '#c9d1d9',
+    'hljs-markup-heading': '#1f6feb',
+    'hljs-markup-list': '#f2cc60',
+    'hljs-markup-italic': '#c9d1d9',
+    'hljs-markup-bold': '#c9d1d9',
+    'hljs-markup-inserted': '#aff5b4',
+    'hljs-bg-markup-inserted': '#033a16',
+    'hljs-markup-deleted': '#ffdcd7',
+    'hljs-bg-markup-deleted': '#67060c'
   }
 };

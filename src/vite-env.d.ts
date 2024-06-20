@@ -9,6 +9,7 @@ declare module 'vue' {
     Component: Component;
     highlightjs: Component;
     $dayjs: typeof dayjs;
+    $fileStorage: any;
   }
 }
 

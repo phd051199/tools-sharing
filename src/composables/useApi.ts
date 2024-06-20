@@ -17,12 +17,15 @@ export type Options<R, P> = Partial<{
 }>;
 
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_MOCK_API_BASE
+  baseURL: import.meta.env.VITE_API_URL,
+  headers: {
+    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImVtYWlsIjoiZHV5QGdtYWlsLmNvbSIsImlhdCI6MTcxODc4OTc0MiwiZXhwIjoxNzE4ODc2MTQyfQ.hrQ23KOtT1aSwtvzlbTgG1heyPgSx4A3bNAIkd3pw0M`
+  }
 });
 
 export function useApi<R = any, P = Record<string, any>>(
   url: string,
-  method: HttpMethod
+  method: HttpMethod = 'get'
 ) {
   async function load<OVR = R, OP = P>(
     params?: OP,

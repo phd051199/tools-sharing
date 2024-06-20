@@ -10,7 +10,12 @@
 // );
 
 @use 'fonts';
+@use 'hightlight';
 
 * {
   font-family: 'OpenSans', 'Roboto', sans-serif !important;
+}
+
+body {
+  background-color: rgb(var(--v-theme-background));
 }

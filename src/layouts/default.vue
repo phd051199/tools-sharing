@@ -1,7 +1,6 @@
 <template>
   <v-app>
     <loading-bar />
-
     <navigation-rail />
 
     <v-main>

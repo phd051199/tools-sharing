@@ -2,7 +2,6 @@
   <v-card
     :elevation="0"
     :ripple="false"
-    class="mb-6"
     @click="router.push(`/script/${script.id}`)"
     :style="{
       border: '1px solid rgb(var(--v-theme-surface-variant)) !important',
@@ -39,19 +38,18 @@
       <highlightjs
         class="max-h-200 overflow-hidden"
         :autodetect="true"
-        :code="code"
+        :code="script.scriptContent ?? ''"
       />
     </div>
   </v-card>
 </template>
 
 <script setup lang="ts">
-import type { Script } from '@/apis/script';
+import type { Script } from '@/types/script';
 
 const router = useRouter();
 
 defineProps<{
   script: Script;
-  code: string;
 }>();
 </script>

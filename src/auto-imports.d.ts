@@ -148,14 +148,12 @@ declare module 'vue' {
     readonly toValue: UnwrapRef<typeof import('vue')['toValue']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
-    readonly useApi: UnwrapRef<typeof import('@/composables')['useApi']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly useDark: UnwrapRef<typeof import('@/composables')['useDark']>
     readonly useDevice: UnwrapRef<typeof import('@/composables')['useDevice']>
     readonly useFileStorage: UnwrapRef<typeof import('@/composables')['useFileStorage']>
-    readonly useGoogleSignIn: UnwrapRef<typeof import('@/composables')['useGoogleSignIn']>
     readonly useRoute: UnwrapRef<typeof import('vue-router/auto')['useRoute']>
     readonly useRouter: UnwrapRef<typeof import('vue-router/auto')['useRouter']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
@@ -224,14 +222,12 @@ declare module '@vue/runtime-core' {
     readonly toValue: UnwrapRef<typeof import('vue')['toValue']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
-    readonly useApi: UnwrapRef<typeof import('@/composables')['useApi']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly useDark: UnwrapRef<typeof import('@/composables')['useDark']>
     readonly useDevice: UnwrapRef<typeof import('@/composables')['useDevice']>
     readonly useFileStorage: UnwrapRef<typeof import('@/composables')['useFileStorage']>
-    readonly useGoogleSignIn: UnwrapRef<typeof import('@/composables')['useGoogleSignIn']>
     readonly useRoute: UnwrapRef<typeof import('vue-router/auto')['useRoute']>
     readonly useRouter: UnwrapRef<typeof import('vue-router/auto')['useRouter']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>

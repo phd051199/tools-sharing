@@ -4,26 +4,24 @@
     <div class="text-h5 mb-8">Featured Scripts</div>
 
     <v-row v-if="data">
-      <v-col cols="12" lg="6">
+      <v-col cols="12" lg="6" class="space-y-6">
         <script-card
           v-for="script in dataPart[0]"
           :script="script"
           :key="script.id"
-          :code="script.id % 2 === 0 ? codeData[0] : codeData[1]"
         />
       </v-col>
 
-      <v-col v-if="dataPart[1]" cols="12" lg="6">
+      <v-col v-if="dataPart[1]" cols="12" lg="6" class="space-y-6">
         <script-card
           v-for="script in dataPart[1]"
           :script="script"
           :key="script.id"
-          :code="script.id % 2 === 0 ? codeData[0] : codeData[1]"
         />
       </v-col>
     </v-row>
 
-    <v-row v-else>
+    <v-row v-if="isPending">
       <v-col cols="12" lg="6" v-for="n in 4" :key="n">
         <v-card
           flat
@@ -39,28 +37,16 @@
 </template>
 
 <script setup lang="ts">
-import * as PluginTypeScript from 'prettier/parser-typescript';
-import * as PluginESTree from 'prettier/plugins/estree';
-import prettier from 'prettier/standalone';
+import { useQuery } from '@tanstack/vue-query';
 
-import { apiGetScripts } from '@/apis/script';
-import { code } from '@/mocks/code';
+import { Script } from '@/types/script';
 import { partitionWithIndex } from '@/utils';
 
-const { data } = apiGetScripts.fetch();
+const { data, isPending } = useQuery<Script[]>({
+  queryKey: ['/script']
+});
+
 const { smallerMdWidth } = useDevice();
-
-let codeData: string[] = [];
-
-if (code.length) {
-  const formatCode = code.map((item) =>
-    prettier.format(item, {
-      parser: 'typescript',
-      plugins: [PluginESTree, PluginTypeScript]
-    })
-  );
-  codeData = await Promise.all(formatCode);
-}
 
 const dataPart = computed(() => {
   const dataValue = data.value;

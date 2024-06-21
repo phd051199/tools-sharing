@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Script } from '@/apis/script';
+import type { Script } from '@/types/script';
 
 defineProps<{
   script: Script;

@@ -13,11 +13,8 @@
 <script setup lang="ts">
 import without from 'lodash/without';
 
-import {
-  // apiGetScript,
-  Script
-} from '@/apis/script';
 import { useScriptStorage } from '@/stores/script';
+import { Script } from '@/types/script';
 import { localStorage } from '@/utils/storage';
 
 const props = defineProps<{

@@ -7,5 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-//
+import { useOneTap } from 'vue3-google-signin';
+
+useOneTap({ cancelOnTapOutside: false });
 </script>

@@ -14,9 +14,10 @@
           color="tertiary-container"
           :min-width="56"
           :min-height="56"
-          icon="mdi-magnify"
           :style="{ borderRadius: '1rem !important' }"
-        />
+        >
+          <i-material-symbols:edit-outline class="size-5" />
+        </v-btn>
       </v-container>
     </template>
 
@@ -36,7 +37,7 @@
           >
             <component
               class="size-6"
-              :is="item.icon"
+              :is="item[getIconKey(isActivated(item.link))]"
               :style="getActiveStyle(item.link)"
             />
           </v-btn>
@@ -62,49 +63,65 @@
 </template>
 
 <script setup lang="ts">
-import IMaterialSymbolsCode from '~icons/material-symbols/code';
+import IMaterialSymbolsCodeBlocks from '~icons/material-symbols/code-blocks';
+import IMaterialSymbolsCodeBlocksOutline from '~icons/material-symbols/code-blocks-outline';
+import IMaterialSymbolsFlowSheet from '~icons/material-symbols/flowsheet';
+import IMaterialSymbolsFlowSheetOutline from '~icons/material-symbols/flowsheet-outline';
+import IMaterialSymbolsBook from '~icons/material-symbols/handyman';
 import IMaterialSymbolsBookOutline from '~icons/material-symbols/handyman-outline';
+import IMaterialSymbolsHome from '~icons/material-symbols/home';
 import IMaterialSymbolsHomeOutline from '~icons/material-symbols/home-outline';
 
 const { isDark, toggleDark } = useDark();
 const router = useRouter();
 
 const navItems = [
-  { badge: true, link: '/', title: 'Home', icon: IMaterialSymbolsHomeOutline },
+  {
+    badge: true,
+    link: '/',
+    title: 'Home',
+    icon: IMaterialSymbolsHomeOutline,
+    activeIcon: IMaterialSymbolsHome
+  },
   {
     badge: true,
     link: '/explore',
     title: 'Explore',
-    icon: IMaterialSymbolsCode
+    icon: IMaterialSymbolsCodeBlocksOutline,
+    activeIcon: IMaterialSymbolsCodeBlocks
   },
   {
     badge: false,
     link: '/tools',
     title: 'My tools',
-    icon: IMaterialSymbolsBookOutline
+    icon: IMaterialSymbolsBookOutline,
+    activeIcon: IMaterialSymbolsBook
+  },
+  {
+    badge: false,
+    link: '/flows',
+    title: 'Flows',
+    icon: IMaterialSymbolsFlowSheetOutline,
+    activeIcon: IMaterialSymbolsFlowSheet
   }
 ];
 
-const isActivated = (link: string) => {
-  return router.currentRoute.value.path === link;
-};
+const isActivated = (link: string) => router.currentRoute.value.path === link;
 
-const navigateTo = (link: string) => {
-  router.push(link);
-};
+const navigateTo = (link: string) => router.push(link);
 
-const getButtonColor = (link: string) => {
-  return isActivated(link) ? 'secondary-container' : 'transparent';
-};
+const getButtonColor = (link: string) =>
+  isActivated(link) ? 'secondary-container' : 'transparent';
 
-const getActiveStyle = (link: string) => {
-  return {
-    fontWeight: isActivated(link) ? '900' : '700',
-    color: isActivated(link)
-      ? 'rgb(var(--v-theme-on-surface))'
-      : 'rgb(var(--v-theme-on-surface-variant))'
-  };
-};
+const getActiveStyle = (link: string) => ({
+  fontWeight: isActivated(link) ? '900' : '700',
+  color: isActivated(link)
+    ? 'rgb(var(--v-theme-on-surface))'
+    : 'rgb(var(--v-theme-on-surface-variant))'
+});
+
+const getIconKey = (isActivated: boolean) =>
+  isActivated ? 'activeIcon' : 'icon';
 
 const toggleIcon = computed(() =>
   isDark.value ? 'mdi-weather-sunny' : 'mdi-weather-night'

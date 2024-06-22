@@ -14,12 +14,12 @@
         :style="{
           color: 'rgb(var(--v-theme-on-surface-variant)) !important'
         }"
-        >{{ `Script ${script.id}` }}</v-card-title
+        >{{ script.name ?? `Script ${script.id}` }}</v-card-title
       >
     </template>
 
     <template #subtitle>
-      <span class="font-bold">by John Lindquist</span>
+      <span class="font-bold">by {{ script.user.userName }}</span>
     </template>
 
     <v-divider>
@@ -28,7 +28,7 @@
 
     <div class="bg-background pb-2 pt-6">
       <v-card-subtitle class="text-description">
-        // Created: {{ $dayjs(script.createdAt).format('YYYY/MM/DD') }}
+        // Created: {{ format(script.createdAt, 'YYYY/MM/DD') }}
       </v-card-subtitle>
 
       <v-card-subtitle class="text-description">
@@ -45,9 +45,12 @@
 </template>
 
 <script setup lang="ts">
+import { useDate } from 'vuetify';
+
 import type { Script } from '@/types/script';
 
 const router = useRouter();
+const { format } = useDate();
 
 defineProps<{
   script: Script;

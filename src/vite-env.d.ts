@@ -2,13 +2,11 @@
 /// <reference types="vite-plugin-pages/client" />
 
 import type { Component } from 'vue';
-import type dayjs from 'dayjs';
 
 declare module 'vue' {
   interface ComponentCustomProperties {
     Component: Component;
     highlightjs: Component;
-    $dayjs: typeof dayjs;
     $fileStorage: any;
   }
 }
@@ -22,3 +20,16 @@ declare module '*.vue' {
 }
 
 declare module 'virtual-icons' {}
+
+declare module 'virtual:pwa-register/vue' {
+  import type { Ref } from 'vue';
+  import type { RegisterSWOptions } from 'vite-plugin-pwa/types';
+
+  export type { RegisterSWOptions };
+
+  export function useRegisterSW(options?: RegisterSWOptions): {
+    needRefresh: Ref<boolean>;
+    offlineReady: Ref<boolean>;
+    updateServiceWorker: (reloadPage?: boolean) => Promise<void>;
+  };
+}

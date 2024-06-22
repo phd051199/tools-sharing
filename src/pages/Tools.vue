@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <div class="font-weight-black text-h3 my-4">My tools</div>
+    <div class="text-h4 font-weight-black my-1">My tools</div>
     <div class="text-h5 mb-8">
       {{
         scriptStorage.installed.length
@@ -30,16 +30,18 @@
 </template>
 
 <script setup lang="ts">
+import { useDisplay } from 'vuetify';
+
 import { useScriptStorage } from '@/stores/script';
 import { partitionWithIndex } from '@/utils';
 
-const { smallerMdWidth } = useDevice();
+const { mdAndDown } = useDisplay();
 const scriptStorage = useScriptStorage();
 
 const dataPart = computed(() => {
   const dataValue = scriptStorage.installed.map((id: any) => ({ id }));
 
-  if (smallerMdWidth.value) {
+  if (mdAndDown.value) {
     return [dataValue];
   }
 

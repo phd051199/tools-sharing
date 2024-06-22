@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <div class="font-weight-black text-h3 my-4">Explore</div>
+    <div class="font-weight-black text-h4 my-1">Explore</div>
     <div class="text-h5 mb-8">Featured Scripts</div>
 
     <v-row v-if="data">
@@ -21,7 +21,7 @@
       </v-col>
     </v-row>
 
-    <v-row v-if="isPending">
+    <v-row v-if="isLoading">
       <v-col cols="12" lg="6" v-for="n in 4" :key="n">
         <v-card
           flat
@@ -38,20 +38,21 @@
 
 <script setup lang="ts">
 import { useQuery } from '@tanstack/vue-query';
+import { useDisplay } from 'vuetify';
 
 import { Script } from '@/types/script';
 import { partitionWithIndex } from '@/utils';
 
-const { data, isPending } = useQuery<Script[]>({
+const { data, isLoading } = useQuery<Script[]>({
   queryKey: ['/script']
 });
 
-const { smallerMdWidth } = useDevice();
+const { mdAndDown } = useDisplay();
 
 const dataPart = computed(() => {
   const dataValue = data.value;
 
-  if (smallerMdWidth.value) {
+  if (mdAndDown.value) {
     return [dataValue];
   }
 

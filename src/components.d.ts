@@ -9,6 +9,10 @@ declare module 'vue' {
   export interface GlobalComponents {
     BtnInstall: typeof import('./components/BtnInstall.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
+    'IMaterialSymbols:accountCircle': typeof import('~icons/material-symbols/account-circle')['default']
+    'IMaterialSymbols:editOutline': typeof import('~icons/material-symbols/edit-outline')['default']
+    'IMaterialSymbols:menu': typeof import('~icons/material-symbols/menu')['default']
+    'IMaterialSymbols:translate': typeof import('~icons/material-symbols/translate')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ScriptCard: typeof import('./components/ScriptCard.vue')['default']

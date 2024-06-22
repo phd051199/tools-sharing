@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <div class="font-weight-black text-h3 my-4">My tools</div>
+    <div class="text-h4 font-weight-black my-1">My tools</div>
     <div class="text-h5 mb-8">
       {{
         scriptStorage.installed.length
@@ -30,16 +30,18 @@
 </template>
 
 <script setup lang="ts">
+import { useDisplay } from 'vuetify';
+
 import { useScriptStorage } from '@/stores/script';
 import { partitionWithIndex } from '@/utils';
 
-const { smallerMdWidth } = useDevice();
+const { mdAndDown } = useDisplay();
 const scriptStorage = useScriptStorage();
 
 const dataPart = computed(() => {
   const dataValue = scriptStorage.installed.map((id: any) => ({ id }));
 
-  if (smallerMdWidth.value) {
+  if (mdAndDown.value) {
     return [dataValue];
   }
 
@@ -50,17 +52,21 @@ const dataPart = computed(() => {
 <style lang="scss">
 .v-divider {
   &__content {
-    --at-apply: 'absolute right-4';
+    position: absolute;
+    right: 1rem; /* 16px */
   }
 }
 
 .text-description {
-  --at-apply: 'text-xs! font-[monaco]!';
+  font-size: 0.75rem !important; /* 12px */
+  line-height: 1rem !important; /* 16px */
+  font-family: monaco !important;
 }
 
 .v-skeleton-loader {
   &__image {
-    --at-apply: 'h-19!';
+    background-color: rgb(var(--v-theme-surface)) !important;
+    height: 4.75rem !important;
   }
 }
 </style>

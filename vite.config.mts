@@ -53,7 +53,7 @@ export default defineConfig({
         'pinia',
         {
           'vue-router/auto': ['useRoute', 'useRouter'],
-          '@/composables': ['useDark', 'useFileStorage', 'useDevice']
+          '@/composables': ['useDark', 'useFileStorage']
         }
       ],
       dts: 'src/auto-imports.d.ts',
